@@ -1,15 +1,11 @@
-.layout{
-  display: flex;
-  justify-content: center;
-}
 .side-bar{
   height: 60vh;
   width: 200px;
   padding: 3rem 0;
-  background: grey;
+  background: rgba(128, 128, 128, 0.267);
 
   &__section{
-    background: beige;
+    background: rgb(233, 233, 233);
     padding-bottom: .5rem;
     padding: 0 1rem 1rem;
     & h3{
@@ -30,16 +26,16 @@
     &__price{
       height: 1.8rem;
       margin-bottom: 1rem;
+      & div{
+        display: inline-block;
+        width: 16px;
+      }
       & label{
-        padding: 0 .4rem 0 0;
+        padding: 0 0.4rem 0 0;
       }
     }
     &_zero-margin{
       margin: 0
     }
   }
-}
-.main{
-  width:500px;
-  border: 1px solid black;
 }

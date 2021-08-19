@@ -1,0 +1,12 @@
+.item-list{
+    padding: 1rem 1.8rem;
+    width:500px;
+    &__more-btn{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        & button{
+            padding: 0 3rem;
+        }
+    }
+  }
