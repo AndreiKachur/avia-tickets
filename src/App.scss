@@ -1,0 +1,45 @@
+.layout{
+  display: flex;
+  justify-content: center;
+}
+.side-bar{
+  height: 60vh;
+  width: 200px;
+  padding: 3rem 0;
+  background: grey;
+
+  &__section{
+    background: beige;
+    padding-bottom: .5rem;
+    padding: 0 1rem 1rem;
+    & h3{
+      padding: 1rem 0;
+    }
+    & input{
+      vertical-align:middle;
+      margin: -2px 0 0 0;
+    } 
+    &__input-text{
+      width: 80%;
+      height: 1.8rem;
+    } 
+    & label{
+      // display: inline-block;
+      padding: 0 .3rem;
+    }
+    &__price{
+      height: 1.8rem;
+      margin-bottom: 1rem;
+      & label{
+        padding: 0 .4rem 0 0;
+      }
+    }
+    &_zero-margin{
+      margin: 0
+    }
+  }
+}
+.main{
+  width:500px;
+  border: 1px solid black;
+}
