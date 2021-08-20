@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .item{
     width:100%;
     & div, header{
@@ -9,14 +11,14 @@
         align-items: center;
         height: 3rem;
         padding: 0 .8rem;
-        background: rgb(0, 138, 202);
+        background: $blue;
         color: whitesmoke;
         &__right{
             text-align: right;
             line-height: 1rem;
             & p{
                 font-size: .8rem;
-                padding: .3rem 0 0 !important;
+                padding: .2rem 0 0 !important;
             }
         }
     }
@@ -42,7 +44,7 @@
             left:50%;
             transform: translate(-50%,-50%);
             background: whitesmoke;
-            color:rgb(253, 155, 42);
+            color: $dark-orange;
             padding: 0 .8rem;
 
         }
@@ -50,17 +52,28 @@
     }
     &_rule-bold{
         border: 0;
-        border-bottom: 2px solid rgb(0, 138, 202) ;
+        border-bottom: 2px solid $blue ;
     }
     &__button{
         width: 100%;
         height: 3rem;
         border: none;
-        background: rgb(251, 166, 68);
+        background: $orange;
         color: whitesmoke;
         margin: 0 0 1.5rem;
         &:hover{
-            background: rgb(253, 155, 42); 
+            background: $dark-orange; 
         }
+    }
+    &_blue{
+        color: $blue;
+    }
+    &__arrow{
+        width: 2rem;
+        font-size: 1.5rem;
+        margin:-0.4rem .1rem;
+    }
+    &__rub{
+        margin:-1rem -0.4rem -3px -3px;
     }
 }

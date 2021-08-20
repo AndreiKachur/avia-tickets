@@ -1,52 +1,48 @@
 import React from 'react'
+import Caption from './Caption'
+import Date from './Date'
 import './Item.scss';
+import { BiRuble } from 'react-icons/bi'
 
-function Item() {
+function Item({ flight }) {
+    const {
+        carrier: { caption },
+        price: { total: { amount, currency } },
+        legs: [direction, backDirection],
+        seats: [seats] } = flight
+
+    const getSeatsAmount = seats => {
+        switch (seats.count) {
+            case 1: return 'одного взрослого пассажира'
+            default: return
+        }
+    }
+
     return (
         <section className='item'>
-            <>
-                <header className='item__header'>
-                    <h2>Polish Airlines</h2>
-                    <div className='item__header__right'>
-                        <h2>21049 руб.</h2>
-                        <p>Стоимость для одного взрослого пассажира</p>
-                    </div>
-                </header>
-                <div>
-                    <p><b>Москва, ШЕРЕМЕТЬЕВО </b>(SVO) -{'>'} <b>ЛОНДОН, Лондон, Хитроу (LHR)</b></p>
+
+            <header className='item__header'>
+                <h2>{caption}</h2>
+                <div className='item__header__right'>
+                    <h2>{amount} {currency === 'руб.'
+                        ? <BiRuble className='item__rub' />
+                        : currency}</h2>
+                    <p>Стоимость для {getSeatsAmount(seats)}</p>
                 </div>
-                <hr />
-                <div className='item__time'>
-                    <span><b>20:40 18 авг. вт </b></span>
-                    <span><b>23 ч 35 мин </b></span>
-                    <span><b>18 авг. вт 20:40</b></span>
-                </div>
-                <div className='item__changing'>
-                    <div></div>
-                </div>
-                <div>
-                    <p>Рейс выполняет: LOT Polish Airlines</p>
-                </div>
-            </>
+            </header>
+
+            <Caption points={direction.segments} />
+            <hr />
+            <Date direction={direction} />
+            <div><p>Рейс выполняет: {caption}</p></div>
+
             <hr className='item_rule-bold' />
-            <>
-                <div>
-                    <p><b>Москва, ШЕРЕМЕТЬЕВО </b>(SVO) -{'>'} <b>ЛОНДОН, Лондон, Хитроу (LHR)</b></p>
-                </div>
-                <hr />
-                <div className='item__time'>
-                    <span><b>20:40 18 авг. вт </b></span>
-                    <span><b>23 ч 35 мин </b></span>
-                    <span><b>18 авг. вт 20:40</b></span>
-                </div>
-                <div className='item__changing'>
-                    <div></div>
-                    <span>1 пересадка</span>
-                </div>
-                <div>
-                    <p>Рейс выполняет: LOT Polish Airlines</p>
-                </div>
-            </>
+
+            <Caption points={backDirection.segments} />
+            <hr />
+            <Date direction={backDirection} />
+            <div><p>Рейс выполняет: {caption}</p></div>
+
             <button className='item__button'>ВЫБРАТЬ</button>
         </section>
     )
