@@ -1,7 +1,7 @@
 import React from 'react'
 import Caption from './Caption'
 import Date from './Date'
-import './Item.scss';
+import './Item.scss'
 import { BiRuble } from 'react-icons/bi'
 
 function Item({ flight }) {
@@ -14,7 +14,7 @@ function Item({ flight }) {
     const getSeatsAmount = seats => {
         switch (seats.count) {
             case 1: return 'одного взрослого пассажира'
-            default: return
+            default: return 'ERROR: unknown passenger type'
         }
     }
 

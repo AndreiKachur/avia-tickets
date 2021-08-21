@@ -1,36 +1,16 @@
-const bootsLoaded = (newBoots) => {
+const flightsLoaded = (newFlights) => {
     return {
-        type: 'BOOTS_LOADED',
-        payload: newBoots
+        type: 'FLIGHTS_LOADED',
+        payload: newFlights
     }
 }
-const bootsRequested = () => ({ type: 'BOOTS_REQUESTED' })
-
-const changeCart = (id, idSize = 0, actualRest = 0, cartButton = false, num = 1) => ({
-    type: 'CHANGE_CART',
-    id: id,
-    idSize: idSize,
-    actualRest: actualRest,
-    cartButton: cartButton,
-    number: num
-})
-const addSize = (size, itemId) => ({
-    type: 'CHECK_SIZE',
-    size: size,
-    itemId: itemId,
-})
-const onDelete = (idSize) => ({ type: 'DELETE_FROM_CART', idSize: idSize })
-
-const placeOrder = () => ({ type: 'PLACE_ORDER' })
-
-const browsePics = (id = 0) => ({ type: 'BROWSE_PICS', id: id })
+const flightsRequested = () => ({ type: 'FLIGHTS_REQUESTED' })
+const onSort = sortType => ({ type: 'SORT', sortType: sortType })
+const refresher = () => ({ type: 'REFRESH' })
 
 export {
-    bootsLoaded,
-    bootsRequested,
-    changeCart,
-    addSize,
-    onDelete,
-    placeOrder,
-    browsePics
+    flightsLoaded,
+    flightsRequested,
+    onSort,
+    refresher
 }

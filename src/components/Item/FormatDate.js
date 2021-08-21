@@ -7,7 +7,7 @@ const setWeekDay = date => {
         case 4: return 'чт'
         case 5: return 'пт'
         case 6: return 'сб'
-        default: return
+        default: return ' wrong date'
     }
 }
 const setMonth = date => {
@@ -24,11 +24,14 @@ const setMonth = date => {
         case 9: return ' окт. '
         case 10: return ' нояб. '
         case 11: return ' дек. '
-        default: return
+        default: return ' wrong date '
     }
 }
 
 const FormatDate = ({ date, arrival = false }) => {
+
+    if (date === undefined) return 'Attention: Error date'
+
     if (arrival) {
         return (
             <span><b>

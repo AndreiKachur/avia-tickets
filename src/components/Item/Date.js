@@ -3,11 +3,19 @@ import FormatDate from './FormatDate.js'
 
 function Date({ direction }) {
 
+    if (!direction?.segments?.length) {
+        return 'Direction data error.'
+    }
     const getDuration = duration => [Math.floor(duration / 60), duration % 60]
+
     const getTransfer = dirSegmentsLength => {
         return dirSegmentsLength === 1
-            ? null : <span>{dirSegmentsLength - 1} пересадка</span>
+            ? null
+            : <span>{dirSegmentsLength - 1} пересадка</span>
     }
+    const backDate = direction.segments.length === 1
+        ? direction.segments[0]
+        : direction.segments[1]
 
     const flightDuration = getDuration(direction.duration)
 
@@ -19,7 +27,7 @@ function Date({ direction }) {
                     {flightDuration[0]} ч {flightDuration[1]} мин
                     </b></span>
                 <span><b>
-                    <FormatDate date={direction.segments[1]} arrival />
+                    <FormatDate date={backDate} arrival />
                 </b></span>
             </div>
             <div className='item__changing'>

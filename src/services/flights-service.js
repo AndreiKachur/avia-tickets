@@ -9,6 +9,8 @@ export default class FlightsService {
         return await res.json()
     }
     async getFlightsItems() {
-        return await this.getResourses('/flights/?_limit=2')
+        return await this.getResourses(`/flights/`)
+        // _limit=${num}
+        // return await this.getResourses(`/flights?_sort=flight.price.total.amount&_order=asc&_limit=${num}`)
     }
 }
