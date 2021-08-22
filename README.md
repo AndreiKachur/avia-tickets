@@ -1,4 +1,5 @@
-This is an avia-tickets app.
+This is an avia-tickets app.  
+Demo-version here: https://avia-ticket.herokuapp.com/
 
 It is based on the following:
 
