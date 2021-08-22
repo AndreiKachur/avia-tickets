@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../actions/actions.js'
+import { onSort } from '../../actions/actions.js'
 
 function FilterSort({ onSort }) {
     const [checked, setChecked] = useState([false, false, false])
+
     const sortList = [
         ['increasing', '- по возрастанию цены', 'ASCEND'],
         ['decreasing', '- по убыванию цены', 'DESCEND'],
@@ -38,6 +39,5 @@ function FilterSort({ onSort }) {
     )
 }
 
-const mapStateToProps = () => ({
-})
-export default connect(mapStateToProps, actions)(FilterSort)
+const mapStateToProps = () => ({})
+export default connect(mapStateToProps, { onSort })(FilterSort)

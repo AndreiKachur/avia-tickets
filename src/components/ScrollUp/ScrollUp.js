@@ -7,7 +7,7 @@ function SrollUp() {
         <ScrollToTop smooth top={100}
             style={{
                 background: 'transparent',
-                boxShadow: 'unset'
+                boxShadow: 'unset',
             }}
 
             component={
