@@ -2,22 +2,22 @@ This is an avia-tickets app.
 
 It is based on the following:
 
--React
--Redux
--SCSS
+-React  
+-Redux  
+-SCSS  
 
 Third-party Services:
 
-react-scroll-up
-react-spinners
-react-icons
+-react-scroll-up  
+-react-spinners  
+-react-icons   
 
-Besides I used json-server, BEM-methodology.
-This project was bootstrapped with [Create React App]
+Besides I used json-server, BEM-methodology.  
+This project was bootstrapped with [Create React App]  
 (https://github.com/facebook/create-react-app).
 
 To run project:
 
-npm install
-npm run json-server
-npm start
+-npm install  
+-npm run json-server  
+-npm start  
