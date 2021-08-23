@@ -15,7 +15,7 @@ const initialState = {
 const reducer = (state = initialState, actions) => {
 
     const { unfilteredFlights, refresh, sortState, minPrice,
-        maxPrice, transfer, carriersChecked } = state
+        maxPrice, transfer, carriersChecked, carriers } = state
     let newMinPrice, newMaxPrice, newCarriers, newCarriersChecked = [], newFlights = []
 
     const onSort = (sortType, newFlights) => {
@@ -66,12 +66,10 @@ const reducer = (state = initialState, actions) => {
             newCarriers = Array
                 .from(new Set(state.flights.map(el => el.flight.carrier.caption)))
                 .sort()
-            newCarriers.forEach(el => newCarriersChecked.push(false))
 
             return {
                 ...state,
                 carriers: newCarriers,
-                carriersChecked: newCarriersChecked,
             }
         case 'FLIGHTS_LOADED':
 
@@ -111,13 +109,17 @@ const reducer = (state = initialState, actions) => {
                 transfer: actions.transfer
             }
         case 'CARRIERS':
-
+            if (carriersChecked.length === 0) {
+                carriers.forEach(el => newCarriersChecked.push(false))
+            } else {
+                newCarriersChecked = carriersChecked
+            }
             return {
                 ...state,
                 carriersChecked: [
-                    ...carriersChecked.slice(0, +actions.id),
+                    ...newCarriersChecked.slice(0, +actions.id),
                     actions.checked,
-                    ...carriersChecked.slice(+ actions.id + 1)]
+                    ...newCarriersChecked.slice(+ actions.id + 1)]
             }
         case 'PUT_PRICE_BORDER':
 

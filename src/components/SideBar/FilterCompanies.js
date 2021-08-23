@@ -12,11 +12,12 @@ function FilterCompanies({ flightsRequested, flightsLoaded, firstFlightsLoaded,
             .then(flights => {
                 flightsLoaded(flights)
                 if (carriers.length === 0) {
-                    firstFlightsLoaded()
+                    firstFlightsLoaded(flights)
                 }
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [transfer, flightsLoaded, flightsRequested,
-        carriers, carriersChecked, firstFlightsLoaded])
+        carriersChecked, firstFlightsLoaded])
 
     return (
         <section className='side-bar__section'>
