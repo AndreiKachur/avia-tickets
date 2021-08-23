@@ -1,9 +1,5 @@
-const firstFlightsLoaded = newFlights => {
-    return {
-        type: 'FIRST_FLIGHTS_LOADED',
-        payload: newFlights
-    }
-}
+const firstFlightsLoaded = () => ({ type: 'FIRST_FLIGHTS_LOADED' })
+
 const flightsLoaded = newFlights => {
     return {
         type: 'FLIGHTS_LOADED',

@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../actions/actions.js'
-import Flightsservice from '../../services/flights-service'
 import Item from '../Item';
 import Spinner from '../Spinner'
 import './ItemList.scss';
 
-function ItemList({ flights, refresh, flightsRequested, firstFlightsLoaded, loading }) {
+function ItemList({ flights, refresh, loading }) {
 
     let [flightsAmount, setFlightsAmount] = useState(2)
 
     useEffect(() => { }, [refresh])
-
-    useEffect(() => {
-        flightsRequested();
-        new Flightsservice().getFlightsItems()
-            .then(flights => firstFlightsLoaded(flights))
-    }, [flightsRequested, firstFlightsLoaded])
 
     flights = flights.slice(0, flightsAmount)
 
@@ -52,4 +44,4 @@ const mapStateToProps = (state) => ({
     loading: state.loading,
     refresh: state.refresh,
 })
-export default connect(mapStateToProps, actions)(ItemList)
+export default connect(mapStateToProps)(ItemList)

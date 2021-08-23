@@ -14,7 +14,8 @@ const initialState = {
 
 const reducer = (state = initialState, actions) => {
 
-    const { unfilteredFlights, refresh, sortState, minPrice, maxPrice, transfer, carriersChecked } = state
+    const { unfilteredFlights, refresh, sortState, minPrice,
+        maxPrice, transfer, carriersChecked } = state
     let newMinPrice, newMaxPrice, newCarriers, newCarriersChecked = [], newFlights = []
 
     const onSort = (sortType, newFlights) => {
@@ -63,17 +64,14 @@ const reducer = (state = initialState, actions) => {
     switch (actions.type) {
         case 'FIRST_FLIGHTS_LOADED':
             newCarriers = Array
-                .from(new Set(actions.payload.map(el => el.flight.carrier.caption)))
+                .from(new Set(state.flights.map(el => el.flight.carrier.caption)))
                 .sort()
             newCarriers.forEach(el => newCarriersChecked.push(false))
 
             return {
                 ...state,
-                flights: actions.payload,
-                unfilteredFlights: actions.payload,
                 carriers: newCarriers,
                 carriersChecked: newCarriersChecked,
-                loading: false
             }
         case 'FLIGHTS_LOADED':
 

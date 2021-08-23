@@ -3,14 +3,20 @@ import { connect } from 'react-redux'
 import Flightsservice from '../../services/flights-service'
 import * as actions from '../../actions/actions.js'
 
-function FilterCompanies({ flightsRequested, flightsLoaded, carriers,
-    carriersChecked, onCarriers, transfer }) {
+function FilterCompanies({ flightsRequested, flightsLoaded, firstFlightsLoaded,
+    onCarriers, transfer, carriers, carriersChecked }) {
 
     useEffect(() => {
         flightsRequested();
         new Flightsservice().getFiltered(carriers, carriersChecked, transfer)
-            .then(flights => flightsLoaded(flights))
-    }, [carriers, carriersChecked, transfer, flightsLoaded, flightsRequested])
+            .then(flights => {
+                flightsLoaded(flights)
+                if (carriers.length === 0) {
+                    firstFlightsLoaded()
+                }
+            })
+    }, [transfer, flightsLoaded, flightsRequested,
+        carriers, carriersChecked, firstFlightsLoaded])
 
     return (
         <section className='side-bar__section'>
@@ -32,7 +38,6 @@ function FilterCompanies({ flightsRequested, flightsLoaded, carriers,
     )
 }
 const mapStateToProps = (state) => ({
-    flights: state.flights,
     carriers: state.carriers,
     carriersChecked: state.carriersChecked,
     transfer: state.transfer
